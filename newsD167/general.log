@@ -1,0 +1,81 @@
+INFO 2023-09-07 22:02:28,802  autoreload  Watching for file changes with StatReloader
+INFO 2023-09-07 22:02:40,577  basehttp  "GET /accounts/login/?next=%2F HTTP/1.1" 200 1467
+INFO 2023-09-07 22:07:57,946 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:09:23,654 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:09:29,056 basehttp "GET /accounts/login/?next=%2F HTTP/1.1" 200 1467
+INFO 2023-09-07 22:10:43,678 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:11:17,327 autoreload C:\Users\Admin\projects\SkillFactory\newsD134\News\News\settings.py changed, reloading.
+INFO 2023-09-07 22:11:18,647 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:12:10,804 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:13:05,107 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:13:29,180 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:13:52,813 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:13:55,502 basehttp "GET /accounts/google/login/?process=login&next=%2F HTTP/1.1" 200 453
+INFO 2023-09-07 22:14:29,014 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:15:52,747 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:15:58,795 basehttp "GET /accounts/password/reset/ HTTP/1.1" 200 842
+INFO 2023-09-07 22:16:06,637 basehttp "GET /accounts/google/login/?process=login&next=%2F HTTP/1.1" 200 453
+INFO 2023-09-07 22:16:32,741 basehttp "GET /accounts/signup/?next=%2F HTTP/1.1" 200 1279
+ERROR 2023-09-07 22:16:49,900 log Internal Server Error: /accounts/signup/
+Traceback (most recent call last):
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\views\generic\base.py", line 70, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\decorators.py", line 20, in wrap
+    resp = function(request, *args, **kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\views\decorators\debug.py", line 89, in sensitive_post_parameters_wrapper
+    return view(request, *args, **kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\views.py", line 234, in dispatch
+    return super(SignupView, self).dispatch(request, *args, **kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\views.py", line 78, in dispatch
+    request, *args, **kwargs
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\views.py", line 207, in dispatch
+    return super(CloseableSignupMixin, self).dispatch(request, *args, **kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\views\generic\base.py", line 98, in dispatch
+    return handler(request, *args, **kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\views.py", line 105, in post
+    response = self.form_valid(form)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\views.py", line 256, in form_valid
+    self.get_success_url(),
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\utils.py", line 192, in complete_signup
+    signal_kwargs=signal_kwargs,
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\utils.py", line 168, in perform_login
+    response = adapter.pre_login(request, user, **hook_kwargs)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\adapter.py", line 412, in pre_login
+    send_email_confirmation(request, user, signup=signup, email=email)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\utils.py", line 319, in send_email_confirmation
+    email_address.send_confirmation(request, signup=signup)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\models.py", line 59, in send_confirmation
+    confirmation.send(request, signup=signup)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\models.py", line 166, in send
+    get_adapter(request).send_confirmation_mail(request, self, signup)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\adapter.py", line 549, in send_confirmation_mail
+    self.send_mail(email_template, emailconfirmation.email_address.email, ctx)
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\allauth\account\adapter.py", line 140, in send_mail
+    msg.send()
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\core\mail\message.py", line 284, in send
+    return self.get_connection(fail_silently).send_messages([self])
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\core\mail\backends\smtp.py", line 102, in send_messages
+    new_conn_created = self.open()
+  File "C:\Users\Admin\PycharmProjects\news\env\lib\site-packages\django\core\mail\backends\smtp.py", line 69, in open
+    self.connection.login(self.username, self.password)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python37\lib\smtplib.py", line 730, in login
+    raise last_exception
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python37\lib\smtplib.py", line 721, in login
+    initial_response_ok=initial_response_ok)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python37\lib\smtplib.py", line 642, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Error: authentication failed: Invalid user or password! 1694146609-jGRJ0L6sJmI0')
+ERROR 2023-09-07 22:16:55,184 basehttp "POST /accounts/signup/ HTTP/1.1" 500 188723
+INFO 2023-09-07 22:17:59,310 autoreload C:\Users\Admin\projects\SkillFactory\newsD134\News\News\settings.py changed, reloading.
+INFO 2023-09-07 22:18:00,656 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:19:53,190 autoreload C:\Users\Admin\projects\SkillFactory\newsD134\News\News\settings.py changed, reloading.
+INFO 2023-09-07 22:19:54,595 autoreload Watching for file changes with StatReloader
+INFO 2023-09-07 22:21:06,878 autoreload C:\Users\Admin\projects\SkillFactory\newsD134\News\News\settings.py changed, reloading.

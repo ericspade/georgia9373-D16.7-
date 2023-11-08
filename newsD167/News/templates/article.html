@@ -1,0 +1,40 @@
+<form method="POST">
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% block content %}
+    {% csrf_token %}
+<h1>{{ news.header|matyugi }}</h1>
+<h5>{{ news.time_in }}</h5>
+<td>{{ news.article_text|matyugi }}</td>
+<h3>{{ news.category.all|join:", " }}</h3>
+        {% for cat in news.category.all %}
+            <tr>
+                    {% if cat in User.user_category %}
+                       <td align="left">
+                            {{ cat }}
+                           <button type="submit" formaction="subscribe/" name="id_cat" value="{{ cat.id }}">Отписаться от этой темы</button>
+                        </td>
+                    {% else %}
+                       <td align="left">
+                            {{ cat }}
+                           <button type="submit" formaction="subscribe/" name="id_cat" value="{{ cat.id }}">Подписаться на все статьи этой категории</button>
+                        </td>
+                    {% endif %}
+            </tr>
+    <br>
+        {% endfor %}
+<h2>Comments:</h2>
+{% if not news.comment.all %}
+    No comments
+{% else %}
+<a href="">Add Comment</a>
+<br/>
+    {% for each in news.comment.all %}
+        {{ each.user }}
+        <br/>
+        {{ each.comment_text }}
+    {% endfor %}
+{% endif %}
+<a href="{% url 'add_comment' news.id %}">Add Comment</a>
+{% endblock content %}
+</form>

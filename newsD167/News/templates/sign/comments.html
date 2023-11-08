@@ -1,0 +1,63 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+{% load custom_tags %}
+{% block title %}
+News
+{% endblock title %}
+<!-- В контенте на странице мы выводим все товары -->
+{% block content %}
+{{ user.id }}
+   <h1>Все Комментарии</h1>
+   <!-- Выводим товары, только если они есть с помощью тега if -->
+    <form action="" method="get">
+       {{ filterset.form.as_p }}
+       <input type="submit" value="Найти" />
+   </form>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+           {% if comments %}
+               <table>
+                   <tr>
+                       <td>Пользователь</td>
+                       <td>Дата</td>
+                       <td></td>
+                   </tr>
+                   {% for each in comments %}
+                   <tr>
+                       <td>{{ each.user }}</td>
+                       <td>{{ each.time_in }}</td>
+                       <td>{{ each.comment_text|truncatechars:20 }}</td>
+                       <td align="left">
+                           {{ each.id }}
+                               <button type="submit" formaction="delete_comment/" name="id_cat" value="{{ each.id }}">Удалить</button>
+                       </td>
+                       <td align="left">
+                           <button type="submit" formaction="approve_comment/" name="id_cat" value="{{ each.id }}">Утвердить комментарий</button>
+                       </td>
+                   </tr>
+                   {% endfor %}
+               </table>
+           {% else %}
+               <h2>Комментариев не найдено</h2>
+           {% endif %}
+            {% if page_obj.has_previous %}
+               <a href="?{% url_replace page=1 %}">1</a>
+               {% if page_obj.previous_page_number != 1 %}
+                   ...
+                   <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+               {% endif %}
+           {% endif %}
+           {# Информация о текущей странице #}
+           {{ page_obj.number }}
+           {# Информация о следующих страницах #}
+           {% if page_obj.has_next %}
+               <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+               {% if paginator.num_pages != page_obj.next_page_number %}
+                   ...
+                   <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+               {% endif %}
+           {% endif %}
+        {% endblock content %}
+            </form>

@@ -1,0 +1,23 @@
+<!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+<!-- Название у нас будет Product -->
+{% block title %}
+Новость
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+{% block content %}
+<h1>{{ news.header|matyugi }}</h1>
+<h5>{{ news.time_in }}</h5>
+<td>{{ news.article_text|matyugi }}</td>
+<h3>{{ news.category.all|join:", " }}</h3>
+<button> <a href="subscribe/">Подписаться на все новости этого раздела</a> </button>
+{% for cat in news.category %}
+<td align="left">
+    {{ cat.name }}
+    <button type="submit" formaction="subscribe/" name="id_cat" value="{{ news.category.all|join:', ' }}">Подписаться</button>
+</td>
+{% endfor %}
+{% endblock content %}

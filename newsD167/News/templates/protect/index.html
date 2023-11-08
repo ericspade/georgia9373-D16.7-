@@ -1,0 +1,29 @@
+{% load custom_filters %}
+{% load custom_tags %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <h3>Управление подписками</h3>
+    <br>
+        {% for cat in category %}
+        <tr>
+                {% if cat in user_category %}
+                   <td align="left">
+                        {{ cat }}
+                       <button type="submit" formaction="subscribe/" name="id_cat" value="{{ cat.id }}">Отписаться</button>
+                    </td>
+                {% else %}
+                   <td align="left">
+                        {{ cat }}
+                       <button type="submit" formaction="subscribe/" name="id_cat" value="{{ cat.id }}">Подписаться</button>
+                    </td>
+                {% endif %}
+        </tr>
+    <br>
+        {% endfor %}
+    <br>
+
+    <button> <a href="sign/logout/">Выйти</a> </button>
+    <button> <a href="sign/comments/">Комментарии</a> </button>
+    </form>
